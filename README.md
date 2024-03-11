@@ -26,8 +26,11 @@ The form should consist of:
 ## Suggested Implementation
 Either 
 - Local web server such as XAMPP or WAMP
+
 Or
+
 - Web hosting
+
 Also
 
 - Basic knowledge of HTML/CSS to create forms
