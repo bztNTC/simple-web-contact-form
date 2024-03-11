@@ -2,26 +2,43 @@
 <html lang="en">
 
 <head>
+    <!-- Meta tags -->
     <meta charset="UTF-8">
     <title>Contact Form</title>
+
+    <!-- Bootstrap CSS -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Summernote CSS -->
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
     <link href="styles.css" rel="stylesheet">
+
+    <!-- jQuery and Bootstrap JS -->
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+    <!-- Summernote JS -->
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
 </head>
 
 <body>
     <div class="container">
+        <!-- Heading -->
         <h1>Contact Us</h1>
+
+        <!-- Contact Form -->
         <form action="submit.php" method="post" id="contactForm">
+            <!-- Name input -->
             <label for="name">Name:</label><br>
             <input type="text" id="name" name="name" required><br><br>
 
+            <!-- Email input -->
             <label for="email">Email:</label><br>
             <input type="email" id="email" name="email" required><br><br>
 
+            <!-- Issue selection -->
             <label for="issue">Issue:</label><br>
             <select id="issue" name="issue" required>
                 <option value="Query">Query</option>
@@ -30,22 +47,29 @@
                 <option value="Other">Other</option>
             </select><br><br>
 
+            <!-- Comment textarea -->
             <label for="comment">Comment:</label><br>
             <textarea id="comment" name="comment" rows="4" cols="50" required></textarea><br><br>
 
+            <!-- Submit button -->
             <input type="submit" value="Submit">
         </form>
     </div>
 
+    <!-- Script to initialize Summernote and populate form fields if URL params exist -->
     <script>
         $(document).ready(function () {
+            // Initialize Summernote for the comment field
             $('#comment').summernote();
 
+            // Check if URL parameters exist
             const urlParams = new URLSearchParams(window.location.search);
             if (urlParams.has('name')) {
+                // Populate form fields with URL parameters
                 $('#name').val(urlParams.get('name'));
                 $('#email').val(urlParams.get('email'));
                 $('#issue').val(urlParams.get('issue'));
+                // Set Summernote content with HTML-decoded comment
                 $('#comment').summernote('code', urlParams.get('comment'));
             }
         });
